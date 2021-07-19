@@ -1,0 +1,25 @@
+.page-success {
+  h2 {
+    color: #29a867;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 180%;
+    color: #525252;
+  }
+
+  .btn-dashboard {
+    background-color: #29a867;
+    &:hover {
+      outline: hidden;
+    }
+  }
+
+  .btn-index {
+    background-color: #f3f3f3;
+    color: #bbbbbb;
+  }
+}

@@ -1,0 +1,19 @@
+.nav-pills {
+  .nav-link {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 27px;
+    color: #9191a9;
+
+    &.active {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 27px;
+      color: #0c0d36;
+      border-radius: 0;
+
+      background: none;
+      border-bottom: 2px solid #0c0d36;
+    }
+  }
+}

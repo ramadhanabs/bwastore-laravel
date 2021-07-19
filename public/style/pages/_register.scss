@@ -1,0 +1,18 @@
+.page-register {
+  .register {
+    input,
+    select {
+      border-style: hidden;
+
+      .is-valid {
+        border: indianred;
+      }
+
+      &:focus {
+        outline: none !important;
+        border-color: #b6d0e6;
+        box-shadow: 0 0 3px #b6d0e6;
+      }
+    }
+  }
+}
