@@ -88,14 +88,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="address_one">Address 1</label>
-                <input type="text" class="form-control" id="address_one" name="address_one" value="Setra Duta Cemara" />
+                <input type="text" class="form-control" id="address_one" name="address_one" value="" />
               </div>
             </div>
             {{-- Address 2 --}}
             <div class="col-md-6">
               <div class="form-group">
                 <label for="address_two">Address 2</label>
-                <input type="text" class="form-control" id="address_two" name="address_two" value="Blok B2 No. 34" />
+                <input type="text" class="form-control" id="address_two" name="address_two" value="" />
               </div>
             </div>
             {{-- Province--}}
@@ -120,21 +120,21 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="zip_code">Postal Code</label>
-                <input type="number" class="form-control" id="zip_code" name="zip_code" value="555184" />
+                <input type="number" class="form-control" id="zip_code" name="zip_code" value="" />
               </div>
             </div>
             {{-- Country --}}
             <div class="col-md-6">
               <div class="form-group">
                 <label for="country">Country</label>
-                <input type="text" class="form-control" id="country" name="country" value="Indonesia" />
+                <input type="text" class="form-control" id="country" name="country" value="" />
               </div>
             </div>
             {{-- Phone Number --}}
             <div class="col-md-6">
               <div class="form-group">
                 <label for="phone_number">Phone Number</label>
-                <input type="number" class="form-control" id="phone_number" name="phone_number" value="082227804252" />
+                <input type="number" class="form-control" id="phone_number" name="phone_number" value="" />
               </div>
             </div>
           </div>
