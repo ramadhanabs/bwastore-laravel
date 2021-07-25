@@ -6,28 +6,35 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- desktop menu -->
+                @auth
+                @php
+                    $name = Auth::user()->name;
+                    $photo = Auth::user()->photo_profile;
+                @endphp
                 <ul class="navbar-nav d-none d-lg-flex ml-auto">
                   <li class="nav-item dropdown">
                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                       <img
-                        src="/images/avatar-user.png"
+                        src="/{{$photo}}"
                         alt="avatar-user"
                         class="rounded-circle mr-2 profile-picture"
                       />
-                      Halo, Bagus!
+                      Halo, {{strtok($name, " ")}}
+                      <i class="fas fa-angle-down ml-2"></i>
                     </a>
                     <div class="dropdown-menu">
-                      <a href="/dashboard.html" class="dropdown-item">Dashboard</a>
-                      <a href="/dashboard-account.html" class="dropdown-item">Setting</a>
+                      <a href="{{route('home')}}" class="dropdown-item">Home</a>
+                      <a href="{{route('dashboard-account-setting')}}" class="dropdown-item">Setting</a>
                       <div class="dropdown-divider"></div>
-                      <a href="/index.html" class="dropdown-item">Log Out</a>
+                      <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="dropdown-item">
+                            Log Out
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link d-inline-block mt-2">
-                      <img src="/images/navbar-icon-cart-filled.svg" alt="" />
-                      <div class="cart-badge">3</div>
-                    </a>
                   </li>
                 </ul>
 
@@ -40,6 +47,7 @@
                     <a href="#" class="nav-link"> Cart </a>
                   </li>
                 </ul>
+                @endauth
               </div>
             </div>
           </nav>

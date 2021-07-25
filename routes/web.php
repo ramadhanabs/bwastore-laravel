@@ -35,13 +35,20 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::get('/dashboard/products', [App\Http\Controllers\DashboardProductsController::class, 'index'])->name('dashboard-products');
     Route::get('/dashboard/products/create', [App\Http\Controllers\DashboardProductsController::class, 'create'])->name('dashboard-product-create');
-    Route::get('/dashboard/products/{id}', [App\Http\Controllers\DashboardProductsController::class, 'detail'])->name('dashboard-product-details');
+    Route::post('/dashboard/products', [App\Http\Controllers\DashboardProductsController::class, 'store'])->name('dashboard-product-store');
+    Route::get('/dashboard/products/{id}', [App\Http\Controllers\DashboardProductsController::class, 'details'])->name('dashboard-product-details');
+    Route::post('/dashboard/products/{id}', [App\Http\Controllers\DashboardProductsController::class, 'update'])->name('dashboard-product-update');
+
+    Route::post('/dashboard/products/gallery/upload', [App\Http\Controllers\DashboardProductsController::class, 'uploadGallery'])->name('dashboard-product-upload-gallery');
+    Route::get('/dashboard/products/gallery/delete/{id}', [App\Http\Controllers\DashboardProductsController::class, 'deleteGallery'])->name('dashboard-product-gallery-delete');
 
     Route::get('/dashboard/transaction', [App\Http\Controllers\DashboardTransactionController::class, 'index'])->name('dashboard-transaction');
-    Route::get('/dashboard/transaction/detail', [App\Http\Controllers\DashboardTransactionController::class, 'detail'])->name('dashboard-transaction-detail');
+    Route::get('/dashboard/transaction/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'detail'])->name('dashboard-transaction-detail');
+    Route::post('/dashboard/transaction/{id}', [App\Http\Controllers\DashboardTransactionController::class, 'update'])->name('dashboard-transaction-update');
 
     Route::get('/dashboard/setting', [App\Http\Controllers\DashboardSettingController::class, 'store'])->name('dashboard-store-setting');
     Route::get('/dashboard/account', [App\Http\Controllers\DashboardSettingController::class, 'account'])->name('dashboard-account-setting');
+    Route::post('/dashboard/account/{redirect}', [App\Http\Controllers\DashboardSettingController::class, 'update'])->name('dashboard-setting-redirect');
 
     Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register');
     Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');

@@ -47,8 +47,9 @@
                         role="tabpanel"
                         aria-labelledby="pills-home-tab"
                       >
+                      @forelse ($sell_transactions as $item)
                         <a
-                          href="/dashboard-transactions-details.html"
+                          href="{{route('dashboard-transaction-detail',$item->id)}}"
                           class="card card-list d-block mt-3"
                           data-aos="fade-right"
                           data-aos-delay="100"
@@ -56,81 +57,52 @@
                           <div class="card-body">
                             <div class="row">
                               <div class="col-md-1">
-                                <img src="/images/dashboard-icon-product-1.png" alt="icon1" />
+                                <img src="{{Storage::url($item->product->galleries->first()->photos ?? '')}}" alt="icon1" class="w-100" style="border-radius:5px"/>
                               </div>
-                              <div class="col-md-4">Excelso Coffee</div>
-                              <div class="col-md-3">Ramadhana Bagus</div>
-                              <div class="col-md-3">12 Januari, 2020</div>
+                              <div class="col-md-4">{{$item->product->name}}</div>
+                              <div class="col-md-3">{{$item->transaction->user->name}}</div>
+                              <div class="col-md-3">{{date_format($item->created_at, "d F Y, H:i")}}</div>
                               <div class="col-md-1 d-none d-md-block">
                                 <img src="/images/dashboard-arrow-right.svg" alt="iconRight" />
                               </div>
                             </div>
                           </div>
                         </a>
-                        <a
-                          href="/dashboard-transactions-details.html"
-                          class="card card-list d-block mt-3"
-                          data-aos="fade-right"
-                          data-aos-delay="200"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img src="/images/dashboard-icon-product-2.png" alt="icon2" />
-                              </div>
-                              <div class="col-md-4">Nike Airmax</div>
-                              <div class="col-md-3">Evana Stevani</div>
-                              <div class="col-md-3">22 Januari, 2020</div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img src="/images/dashboard-arrow-right.svg" alt="iconRight" />
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                        <a
-                          href="/dashboard-transactions-details.html"
-                          class="card card-list d-block mt-3"
-                          data-aos="fade-right"
-                          data-aos-delay="300"
-                        >
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img src="/images/dashboard-icon-product-3.png" alt="icon3" />
-                              </div>
-                              <div class="col-md-4">Sofa Ikea</div>
-                              <div class="col-md-3">Bagus Solichuddin</div>
-                              <div class="col-md-3">25 Januari, 2020</div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img src="/images/dashboard-arrow-right.svg" alt="iconRight" />
-                              </div>
-                            </div>
-                          </div>
-                        </a>
+                      @empty
+                        <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
+                                No Transaction Found
+                        </div>
+                      @endforelse
                       </div>
                       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <a href="/dashboard-transactions-details.html" class="card card-list d-block mt-3">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img src="/images/dashboard-icon-product-1.png" alt="icon1" />
-                              </div>
-                              <div class="col-md-4">Starbuck Coffee</div>
-                              <div class="col-md-3">Rama Bagus</div>
-                              <div class="col-md-3">15 Januari, 2020</div>
-                              <div class="col-md-1 d-none d-md-block">
-                                <img src="/images/dashboard-arrow-right.svg" alt="iconRight" />
-                              </div>
+                          @forelse ($buy_transactions as $item)
+                            <a href="{{route('dashboard-transaction-detail',$item->id)}}" class="card card-list d-block mt-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                    <div class="col-md-1">
+                                        <img src="{{Storage::url($item->product->galleries->first()->photos ?? '')}}" class="w-100" style="border-radius:5px" />
+                                    </div>
+                                    <div class="col-md-4">{{$item->product->name}}</div>
+                                    <div class="col-md-3">{{$item->product->user->name}}</div>
+                                    <div class="col-md-3">{{$item->created_at}}</div>
+                                    <div class="col-md-1 d-none d-md-block">
+                                        <img src="/images/dashboard-arrow-right.svg" alt="iconRight" />
+                                    </div>
+                                    </div>
+                                </div>
+                            </a>
+                          @empty
+                            <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
+                                No Transaction Found
                             </div>
-                          </div>
-                        </a>
+                          @endforelse
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>    
+          </div>
 @endsection
 
 @push('addon-script')
