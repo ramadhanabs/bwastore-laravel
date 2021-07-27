@@ -24,6 +24,7 @@ Route::get('/success', [App\Http\Controllers\CartController::class, 'success'])-
 
 Route::get('/details/{id}', [App\Http\Controllers\DetailController::class, 'index'])->name('details');
 Route::post('/details/{id}', [App\Http\Controllers\DetailController::class, 'add'])->name('details-add');
+Route::post('/details', [App\Http\Controllers\DetailController::class, 'comment'])->name('comment');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart');

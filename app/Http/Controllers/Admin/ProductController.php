@@ -10,6 +10,8 @@ use App\Models\Product;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Comment;
+
 use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller

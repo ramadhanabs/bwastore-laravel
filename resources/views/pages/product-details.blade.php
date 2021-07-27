@@ -13,7 +13,10 @@
               <nav>
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="/index.html">Home</a>
+                    <a href="{{route("home")}}">Home</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="{{route("categories")}}">Product</a>
                   </li>
                   <li class="breadcrumb-item active">Product Details</li>
                 </ol>
@@ -92,35 +95,53 @@
           <div class="container">
             <div class="row">
               <div class="col-12 col-lg-8 mt-3" data-aos="fade-up" data-aos-delay="100">
-                <h5>Customer Review (3)</h5>
+
+                <h5>Customer Review ({{count($comment)}})</h5>
               </div>
             </div>
             <div class="row">
               <div class="col-12 col-lg-8">
-                <ul class="list-unstyled">
-                  <li class="media" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/images/avatar-3.png" alt="" class="mr-3 rounded-circle">
-                    <div class="media-body">
-                      <h6 class="mt-2 mb-1">Raja Siahaan</h6>
-                      I really happy to decided buy this product last week now feels like
-                      racer.
-                    </div>
-                  </li>
-                  <li class="media" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/images/avatar-2.png" alt="" class="mr-3 rounded-circle">
-                    <div class="media-body">
-                      <h6 class="mt-2 mb-1">Ratu Situmbolon</h6>
-                      When I saw at first, it was really awesome to have with. Just let me know if there is another upcoming product like this.
-                    </div>
-                  </li>
-                  <li class="media" data-aos="fade-up" data-aos-delay="400">
-                    <img src="/images/avatar-1.png" alt="" class="mr-3 rounded-circle">
-                    <div class="media-body">
-                      <h6 class="mt-2 mb-1">Putri Siahaan</h6>
-                      I love this car!
-                    </div>
-                  </li>
-                </ul>
+                  @if (count($comment) > 0)
+                      @foreach ($comment as $item)
+                        <ul class="list-unstyled">
+                            <li class="media" data-aos="fade-up" data-aos-delay="200">
+                                <img src="/{{$item->user->photo_profile}}" alt="" class="mr-3 rounded-circle">
+                                <div class="media-body">
+                                <h6 class="mt-2 mb-1">{{$item->user->name}}</h6>
+                                {{$item->comment}}
+                                </div>
+                            </li>
+                        </ul>
+                      @endforeach
+                      @auth
+                        <div class="media-body my-4">
+                            <form action="{{route('comment')}}" method="POST">
+                            @csrf
+                                <input type="hidden" name="foreignKey_product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="foreignKey_user_id" value="{{ Auth::user()->id }}">
+                                <textarea name="comment" placeholder="Masukan Pesan" cols="20" rows="5" class="form-control"></textarea>
+                                <button type="submit" class="btn btn-success mt-2"> Send</button>
+                            </form>
+                        </div>
+                      @endauth
+                      @else
+                        <ul class="list-unstyled">
+                            <li class="media">
+                                No Comments about this product.
+                            </li>
+                        @auth
+                            <div class="media-body my-4">
+                                <form action="{{route('comment')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="foreignKey_product_id" value="{{ $product->id }}">
+                                <input type="hidden" name="foreignKey_user_id" value="{{ Auth::user()->id }}">
+                                <textarea name="comment" placeholder="Masukan Pesan" cols="20" rows="5" class="form-control"></textarea>
+                                <button type="submit" class="btn btn-success mt-2"> Send</button>
+                                </form>
+                            </div>
+                        @endauth
+                        </ul>
+                @endif
               </div>
             </div>
             </div>
