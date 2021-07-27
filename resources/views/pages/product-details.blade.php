@@ -46,7 +46,7 @@
                   <a href="#" @click="changeActive(index)">
                     <img
                       :src="photo.url"
-                      class="w-100 thumbnail-image"
+                      class="w-100 thumbnail-image "
                       :class="{active: index == activePhoto}"
                       alt=""
                     />

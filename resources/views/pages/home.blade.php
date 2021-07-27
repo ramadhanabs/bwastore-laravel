@@ -75,7 +75,7 @@
               @endphp
               @forelse ($products as $product)
                 <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{$incrementCategory += 100}}">
-                    <a href="/details.html" class="component-products d-block">
+                    <a href="{{route("details", $product->slug)}}" class="component-products d-block">
                         <div class="products-thumbnail">
                             <div class="products-image" style="
                                 @if ($product->galleries->count())
