@@ -15,7 +15,7 @@
                   <li class="nav-item dropdown">
                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
                       <img
-                        src="/{{$photo}}"
+                        src="/storage/{{$photo}}"
                         alt="avatar-user"
                         class="rounded-circle mr-2 profile-picture"
                       />
