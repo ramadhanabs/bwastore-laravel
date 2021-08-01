@@ -13,15 +13,6 @@
             }
         }
     }
-
-    .profile-picture {
-        border-radius: 50%;
-        height: 100px;
-        width: 100px;
-        object-fit: cover;
-        object-position: center;
-    }
-
     .cart-badge {
         display: inline-block;
         min-width: 2em; /* em unit */
@@ -42,4 +33,12 @@
 .navbar-fixed-top.scrolled {
     background-color: #ffffff !important;
     transition: background-color 200ms linear;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    object-position: center;
 }
