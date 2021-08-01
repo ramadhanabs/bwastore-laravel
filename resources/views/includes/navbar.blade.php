@@ -37,11 +37,13 @@
                 <ul class="navbar-nav d-none d-lg-flex">
                   <li class="nav-item dropdown">
                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown">
-                      <img
-                        src="/storage/{{$photo}}"
-                        alt="avatar-user"
-                        class="profile-picture mr-2"
-                      />
+                        <div class="profile-picture">
+                            <img
+                            src="/storage/{{$photo}}"
+                            alt="avatar-user"
+                            class="profile-picture mr-2"
+                            />
+                        </div>
                       <i class="fas fa-angle-down"></i>
                     </a>
                     <div class="dropdown-menu border-0 shadow">
