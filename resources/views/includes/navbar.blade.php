@@ -40,7 +40,7 @@
                       <img
                         src="/storage/{{$photo}}"
                         alt="avatar-user"
-                        class="mr-2 profile-picture"
+                        class="profile-picture mr-2"
                       />
                       <i class="fas fa-angle-down"></i>
                     </a>
