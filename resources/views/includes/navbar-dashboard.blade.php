@@ -17,7 +17,7 @@
                       <img
                         src="/storage/{{$photo}}"
                         alt="avatar-user"
-                        class="rounded-circle mr-2 profile-picture"
+                        class="mr-2 profile-picture"
                       />
                       Halo, {{strtok($name, " ")}}
                       <i class="fas fa-angle-down ml-2"></i>
